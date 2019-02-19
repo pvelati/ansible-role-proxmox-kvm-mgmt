@@ -1,0 +1,5 @@
+---
+# Add @pam if using local proxmox user
+credentials:
+    username: root@pam
+    password: pa$$w0rd

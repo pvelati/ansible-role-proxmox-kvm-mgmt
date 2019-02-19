@@ -1,0 +1,5 @@
+---
+# Set these parameters in a vault file and delete this file
+credentials:
+  username:
+  password: 

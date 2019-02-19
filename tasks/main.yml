@@ -1,0 +1,33 @@
+---
+- import_tasks: create.yml
+  tags: [ 'never', 'create', 'present' ]
+
+- set_fact:
+    operation: started
+  tags: [ 'never', 'started', 'start' ]
+
+- set_fact:
+    operation: absent
+  tags: [ 'never', 'absent', 'delete' ]
+
+- set_fact:
+    operation: stopped
+  tags: [ 'never', 'stopped', 'stop' ]
+
+- set_fact:
+    operation: restarted
+  tags: [ 'never', 'restarted', 'restart' ]
+
+- set_fact:
+    operation: current
+  tags: [ 'never', 'current', 'list' ]
+
+- set_fact:
+    operation: present
+    update: true
+  tags: [ 'never', 'update' ]
+    
+- import_tasks: ops.yml
+  tags: [ 'never', 'started', 'start', 'absent', 'delete', 'stopped', 'stop', 'restarted', 'restart', 'current', 'list', 'update' ]
+
+- shell: /bin/echo "You need to execute playbook with specified tags"

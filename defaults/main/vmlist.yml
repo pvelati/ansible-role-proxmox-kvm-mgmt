@@ -1,0 +1,9 @@
+---
+# See globals.yml for all variables 
+vm_list:
+  - name: vm-name
+    net: {"net0":"virtio=32:5F:B4:37:16:0F,bridge=vmbr1"}
+    scsi: {"scsi0":"local-lvm:16,ssd=1"}
+    cores: 4
+    memory: 1024
+    balloon: 512
