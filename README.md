@@ -1,18 +1,20 @@
-Ansible Proxmox KVM Management
-==============================
+# Ansible Role: Proxmox KVM Management
 
-Ansible Role - Create and manage Proxmox KVM VMs
+Create and manage Proxmox KVM virtual machines.
 
-Requirements
-------------
-
+## Requirements
 See *requirements.txt*.
 
 Use this command to install all requirements:
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
 
 Setup credentials in ENV with:
-`source extras/proxmox-variables.sh`
+```
+source extras/proxmox-variables.sh
+```
+
 The script will add automatically @pem to the username.
 
 If you prefer, you can setup the credentials in a secure vault file, using these parameters:
@@ -21,37 +23,37 @@ If you prefer, you can setup the credentials in a secure vault file, using these
       username: root@pem
       password: yourpassword
 
-
-Role Variables
---------------
-
+## Role Variables
 See defaults/globals.yml for the complete list of variables.
-See also [proxmox_kvm](https://docs.ansible.com/ansible/latest/modules/proxmox_kvm_module.html) module page.
+See also [proxmox_kvm] module page.
 
-Usage
------
+## Dependencies
+None
 
+## Usage
 Define a list of virtual machines in this format:
 
-    vm_list:
-       - name: vm1
-         net: {"net0":"virtio=32:5F:B4:35:16:0F,bridge=vmbr0"}
-         scsi: {"scsi0":"local-lvm:8,ssd=1"}
-         cores: 1
-         memory: 1024
-         balloon: 512
-         vga: vmware
-       - name: vm2
-         net: {"net0":"virtio=32:5F:B4:37:16:0F,bridge=vmbr1"}
-         scsi: {"scsi0":"local-lvm:16,ssd=1"}
-         cores: 4
-         memory: 4096
-         protection: yes
-        
-         
+```
+vm_list:
+   - name: vm1
+     net: {"net0":"virtio=32:5F:B4:35:16:0F,bridge=vmbr0"}
+     scsi: {"scsi0":"local-lvm:8,ssd=1"}
+     cores: 1
+     memory: 1024
+     balloon: 512
+     vga: vmware
+   - name: vm2
+     net: {"net0":"virtio=32:5F:B4:37:16:0F,bridge=vmbr1"}
+     scsi: {"scsi0":"local-lvm:16,ssd=1"}
+     cores: 4
+     memory: 4096
+     protection: yes
+```
 
 Execute playbook:
-`ansible-playbook ansible-proxmox-kvm-mgmt.yml --tags "OPERATION"`
+```
+ansible-playbook ansible-proxmox-kvm-mgmt.yml --tags "OPERATION"
+```
 
 Tag **OPERATION**:
   * Create VMs
@@ -75,20 +77,20 @@ Tag **OPERATION**:
   * Update VMs
     * **update** 
 
-
-Example Playbook
-----------------
-
-    - hosts: localhost  
-      roles:
-         - ansible-proxmox-kvm-mgmt
-      vars:
-        - global_api_host: NODE_IP or NODE_DNS_NAME
-        - global_node: "NODENAME"
-
+## Example Playbook
+```
+---
+- hosts: localhost  
+  roles:
+    - ansible-proxmox-kvm-mgmt
+  vars:
+    - global_api_host: NODE_IP or NODE_DNS_NAME
+    - global_node: "NODENAME"
+```
 **And other variables from defaults/main/globals.yml**
 
-License
--------
+## License
 
-GNU GPLv3
+GPL-3.0
+
+[proxmox_kvm]: <https://docs.ansible.com/ansible/latest/modules/proxmox_kvm_module.html>
