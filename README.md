@@ -7,7 +7,7 @@ See *requirements.txt*.
 
 Use this command to install all requirements:
 ```
-pip install -r requirements.txt
+python3 -m pip install --user -r requirements.txt
 ```
 
 Setup credentials in ENV with:
@@ -28,7 +28,7 @@ See defaults/globals.yml for the complete list of variables.
 See also [proxmox_kvm] module page.
 
 ## Dependencies
-None
+Module community.general.proxmox_kvm that can be found in collection community.general.
 
 ## Usage
 Define a list of virtual machines in this format:
@@ -38,6 +38,7 @@ vm_list:
    - name: vm1
      net: {"net0":"virtio=32:5F:B4:35:16:0F,bridge=vmbr0"}
      scsi: {"scsi0":"local-lvm:8,ssd=1"}
+     bootdisk: 'scsi0'
      cores: 1
      memory: 1024
      balloon: 512
@@ -45,6 +46,7 @@ vm_list:
    - name: vm2
      net: {"net0":"virtio=32:5F:B4:37:16:0F,bridge=vmbr1"}
      scsi: {"scsi0":"local-lvm:16,ssd=1"}
+     bootdisk: 'scsi0'
      cores: 4
      memory: 4096
      protection: yes
@@ -86,6 +88,11 @@ Tag **OPERATION**:
   vars:
     - global_api_host: NODE_IP or NODE_DNS_NAME
     - global_node: "NODENAME"
+    - vm_list:
+        - name: example-vm1
+          net: {"net0":"virtio=32:5F:B4:35:16:0F,bridge=vmbr0"}
+          scsi: {"scsi0":"local-lvm:8,ssd=1"}
+          bootdisk: 'scsi0'
 ```
 **And other variables from defaults/main/globals.yml**
 
