@@ -51,6 +51,7 @@ global:
   newid: ''
   node: '{{ global_node }}'
   numa: ''
+  numa_enabled: ''
   onboot: 'yes'
   ostype: 'l26'
   parallel: ''
