@@ -41,6 +41,7 @@
      newid: "{{ item['newid'] if item.get('newid') else ( global['newid'] if global['newid'] else omit ) }}"
      node: "{{ item['node'] if item.get('node') else ( global['node'] if global['node'] else omit ) }}"
      numa: "{{ item['numa'] if item.get('numa') else ( global['numa'] if global['numa'] else omit ) }}"
+     numa_enabled: "{{ item['numa_enabled'] if item.get('numa_enabled') else ( global['numa_enabled'] if global['numa_enabled'] else omit ) }}"
      onboot: "{{ item['onboot'] if item.get('onboot') else global['onboot'] }}"
      ostype: "{{ item['ostype'] if item.get('ostype') else global['ostype'] }}"
      parallel: "{{ item['parallel'] if item.get('parallel') else ( global['parallel'] if global['parallel'] else omit ) }}"
