@@ -6,6 +6,8 @@
      api_host: "{{ item['api_host'] if item.get('api_host') else ( global['api_host'] if global['api_host'] else omit ) }}"
      api_password: "{{ item['api_password'] if item.get('api_password') else ( global['api_password'] if global['api_password'] else omit ) }}"
      api_user: "{{ item['api_user'] if item.get('api_user') else ( global['api_user'] if global['api_user'] else omit ) }}"
+     api_token_secret: "{{ item['api_token_secret'] if item.get('api_token_secret') else ( global['api_token_secret'] if global['api_token_secret'] else omit ) }}"
+     api_token_id: "{{ item['api_token_id'] if item.get('api_token_id') else ( global['api_token_id'] if global['api_token_id'] else omit ) }}"
      args: "{{ item['args'] if item.get('args') else ( global['args'] if global['args'] else omit ) }}"
      autostart: "{{ item['autostart'] if item.get('autostart') else global['autostart'] }}"
      balloon: "{{ item['balloon'] if item.get('balloon') else global['balloon'] }}"

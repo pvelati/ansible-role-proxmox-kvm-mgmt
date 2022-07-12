@@ -2,4 +2,7 @@
 # Set these parameters in a vault file and delete this file
 credentials:
   username:
-  password: 
+  password:
+  api_token_id:
+  api_token_secret:
+

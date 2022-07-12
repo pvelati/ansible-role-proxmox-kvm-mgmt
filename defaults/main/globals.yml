@@ -13,6 +13,8 @@ global:
   api_host: '{{ global_api_host }}'
   api_password: '{{ credentials.password if credentials.get("password") else lookup("env","PROXMOX_PASSWORD") }}'
   api_user: '{{ credentials.username if credentials.get("username") else lookup("env","PROXMOX_USER") }}'
+  api_token_secret: '{{ credentials.api_token_secret if credentials.get("api_token_secret") else lookup("env","PROXMOX_TOKEN_SECRET") }}'
+  api_token_id: '{{ credentials.api_token_id if credentials.get("api_token_id") else lookup("env","PROXMOX_TOKEN_ID") }}'
   args: '-serial unix:/var/run/qemu-server/<vmid>.serial,server,nowait'
   autostart: 'no'
   balloon: '0'
